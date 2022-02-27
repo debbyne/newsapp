@@ -34,3 +34,14 @@ def source(source_id):
 
     return render_template('articles.html', articles = articles, title = title)
 
+@main.route('/search/<name>')
+def search(name):
+        '''
+        View function to display the search results
+        '''
+        terms = name.split(' ')
+        query = '+'.join(terms)
+        articles_present = search_article(query)
+        title = 'Search Results | Newswave'
+        
+        return render_template('search.html',title = title, articles = articles_present )
