@@ -23,10 +23,11 @@ def index():
         return redirect(url_for('search',name=search_article))
     else:
         return render_template('index.html', title = title, trending=trending_news general=general_news,politics=politics,business=business,entertainment=Entertainment,health=health,sports=sports )
+
 @main.route('/articles/<source_id>')
 def source(source_id):
     '''
-    View articles page function that returns articles from the specified sources.
+    function that returns articles from their sources.
     '''
     articles = get_sources(source_id)
     title = articles[0].article_source['name'] + ' | Newswave'
