@@ -12,10 +12,11 @@ class articles:
     '''
     class that defines articles
     '''
-    def __init__(self,article_image_url,article_source,article_title,article_author,article_description,time_published):
+    def __init__(self,article_image_url,article_source,article_title,article_author,article_description,time_published,article_content):
         self.article_image_url=article_image_url
         self.article_source=article_source
         self.article_title=article_title
         self.article_author=article_author
         self.article_description=article_description
         self.time_published=time_published
+        self.article_content=article_content

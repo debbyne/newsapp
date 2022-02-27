@@ -11,4 +11,7 @@ class SourceTest(unittest.TestCase):
         '''
         self.new_source = Source('bbc-news','BBC NEWS','general','"https://www.bbc.co.uk')
     def __init__(self):
+        '''
+        to test if the object is initialized properly
+        '''
         self.assertTrue(isinstance(self.new_source,Source))
