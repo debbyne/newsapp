@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="style.css">
+{% endblock %}
+{% block content %}
+{{super()}}
+    <div class="container">
+
+        <div class="row">
+
+            <h3> Results </h3>
+            <hr>
+            {% for article in articles%}
+        <div class="card">
+            <div class="img">
+                <img src="{{article.article_image_url}}" alt="" class="img-fluid" >
+            </div>
+            <div class="article-title">
+                <a href="{{article.article_url}}" target="_blank" >{{article.article_title}}</a>
+                
+            </div>
+        </div> 
+        </div>
+
+    </div>
+{% endblock %}
