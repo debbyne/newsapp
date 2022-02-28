@@ -22,7 +22,7 @@ def index():
     if search_article:
         return redirect(url_for('search',name=search_article))
     else:
-        return render_template('index.html', title = title, trending=trending_news general=general_news,politics=politics,business=business,entertainment=Entertainment,health=health,sports=sports )
+        return render_template('index.html', title = title, trending=trending_news,general=general_news,politics=politics,business=business,entertainment=Entertainment,health=health,sports=sports )
 
 @main.route('/articles/<source_id>')
 def source(source_id):
