@@ -11,11 +11,11 @@ def configure_request(app):
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config['NEWS_API_BASE_URL']
     articles_url=app.config['ARTICLE_BASE_URL']
-def get_articles(articles_results_list):
+def get_articles(id):
     '''
     function that gets the json response to our url request
     '''
-    get_articles_url = base_url.format(articles_results_list,api_key)
+    get_articles_url = base_url.format(id,api_key)
 
     with urllib.request.urlopen(articles_url) as url:
         get_articles_data = url.read()
@@ -46,13 +46,13 @@ def process_articles_results(articles_results_list):
         articles_results.append(article_object)
     return articles_results
 
-def get_sources(sources_results_list):
+def get_sources(category):
     '''
     function that gets the json response to our url request
     '''
-    get_sources_url = base_url.format(sources_results_list,api_key)
+    get_sources_url = base_url.format(category,api_key)
 
-    with urllib.request.urlopen(articles_url) as url:
+    with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data = url.read()
         get_sources_response = json.loads(get_sources_data)
 
@@ -69,11 +69,13 @@ def process_sources_results(sources_results_list):
     """
     sources_results = []
     for individual_sources in sources_results_list:
-        sorce_id = individual_sources.get('id')
-        name = individual_sources.get('name')
-        url = individual_sources.get('url')
-        source_object = Source(id,name,url)
+        source_name=individual_sources.get('name')
+        source_url = individual_sources.get('url')
+        source_id=individual_sources.get('id')
+        description=individual_sources.get('description')
+
+        source_object = Source(source_id,source_name,source_url,description)
         sources_results.append(source_object)
     return sources_results
-def search_article():
-    pass
+# def search_article():
+#     pass

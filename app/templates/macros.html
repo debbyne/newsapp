@@ -1,20 +1,19 @@
-
-{% macro displayNewsList(news_list) %}
-{% for news_row in news_list |batch(4)%}
+{% macro display_sources_list(sources_result_list) %}
 <div class="row">
-	{% for news in news_row %}
-	<div class="col-md-6" style="border: 1px solid rgb(177, 171, 171); border-radius: 10px; margin: 1px; width: 48%; height: 190px;" >
-		<div>
-			<h3>{{ articles.title}}</h3>
-		</div>
-		<div>
-			<p>
-				{{ article.description}}
-			</p>
-			<a href="/articles/{{news.id}}"><button type="button" class="btn btn-outline-primary">View {{ news.name}} articles</button></a>
-		</div>
-	</div>
-	{% endfor %}
+    {% for source in sources_result_list %}
+    <div class="col-md-4 " style="  height: 400px; ;">
+        <h3 style="color:blue; ">
+            <li style="list-style: none;">{{source.name}}</li>
+        </h3>
+        <li style="font-size:18px; list-style: none;"> <strong>ABOUT SOURCE:</strong> {{source.description}}</li>
+        <li style=" font-size:18px;list-style: none;"><strong>COUNTRY:</strong> {{source.country}}</li>
+        <a href="">
+            <li style="font-size:18px; list-style: none;"><strong>OFFICIAL SITE:</strong> {{source.url}}</li>
+			<img src="{{source.url}}" alt="">
+        </a>
+        <a href="/articles/{{source.id}}" class="btn btn-primary" style="font: size 24px;">See
+            {{source.name}} news articles</a>
+    </div>
+    {% endfor %}
 </div>
-{% endfor %}
 {% endmacro %}
