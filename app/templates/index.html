@@ -17,6 +17,7 @@
       />
 </div>
     <!-- <h2>{{macro.display_sources_list(sports)}}</h2> -->
+    <div class="articles">
     <ul>
         {% for article in general%}
 
@@ -31,10 +32,11 @@
             <p>
                 {{article.description}}
             </p>
-            <img src="{{article.urlToImage}}" alt="" height="200px" width="250px">
+            <img src="{{article.urlToImage}}" alt="" height="270px" width="270px">
         </li>
         {% endfor%}
     </ul>
+</div>
 {% endblock %}
 
 

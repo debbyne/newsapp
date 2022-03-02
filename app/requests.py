@@ -74,8 +74,6 @@ def process_sources_results(sources_results_list):
         urlToImage=individual_sources.get('urlToImage')
         description=individual_sources.get('description')
         publishedAt=individual_sources.get('publishedAt')
-
-
         source_object = Source(source_title,source_url,description,urlToImage,publishedAt)
         sources_results.append(source_object)
     return sources_results
