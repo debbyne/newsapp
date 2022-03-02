@@ -1,10 +1,17 @@
 {% extends 'base.html'%}
-{% block content%}
+{{% block content %}
+<!-- <h2>{{macro.display_sources_list(sports)}}</h2> -->
 <ul>
-    {% for article in articles%}
+    {% for article in general%}
 
     <li>
-        <h1>{{article.title}}</h1>
+        <p>
+            {{article.source_title}}
+        </p>
+        <h1>{{article.source_url}}</h1>
+        <h1>
+            {{article.publishedAt}}
+        </h1>
         <p>
             {{article.description}}
         </p>
@@ -12,7 +19,4 @@
     </li>
     {% endfor%}
 </ul>
-
-
-
-{% endblock%}
+{% endblock %}
