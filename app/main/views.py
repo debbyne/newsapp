@@ -1,3 +1,4 @@
+from unicodedata import category
 from flask import render_template,request,redirect,url_for
 from . import main
 from ..requests import get_articles,get_sources
@@ -42,3 +43,12 @@ def source(source_id):
 #         title = 'Search Results | Newswave'
         
 #         return render_template('search.html',title = title, articles = articles_present )
+@main.route('/trial')
+def trial_source():
+    '''
+    function that returns articles from their sources.
+    '''
+    articles = get_articles()
+    title = 'The hottest news right now'
+
+    return render_template('trial.html', articles = articles, title = title)

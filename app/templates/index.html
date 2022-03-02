@@ -1,8 +1,25 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
 {% block content %}
-    <h2>{{macro.display_sources_list(sports)}}</h2>
-    <h3>hsbdhhgd</h3>
+    <!-- <h2>{{macro.display_sources_list(sports)}}</h2> -->
+    <ul>
+        {% for article in general%}
+
+        <li>
+            <p>
+                {{article.source_title}}
+            </p>
+            <h1>{{article.source_url}}</h1>
+            <h1>
+                {{article.publishedAt}}
+            </h1>
+            <p>
+                {{article.description}}
+            </p>
+            <img src="{{article.urlToImage}}" alt="">
+        </li>
+        {% endfor%}
+    </ul>
 {% endblock %}
 
 

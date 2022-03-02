@@ -11,11 +11,11 @@ def configure_request(app):
     api_key = app.config['NEWS_API_KEY']
     base_url = app.config['NEWS_API_BASE_URL']
     articles_url=app.config['ARTICLE_BASE_URL']
-def get_articles(id):
+def get_articles():
     '''
     function that gets the json response to our url request
     '''
-    get_articles_url = base_url.format(id,api_key)
+    get_articles_url='https://newsapi.org/v2/everything?language=en&sources=bbc-news&apiKey=e7075240ae9440c18f51074a00244ece'
 
     with urllib.request.urlopen(articles_url) as url:
         get_articles_data = url.read()
@@ -23,8 +23,8 @@ def get_articles(id):
 
         articles_results = None
 
-        if get_articles_response['sources']:
-            articles_results_list = get_articles_response['sources']
+        if get_articles_response['articles']:
+            articles_results_list = get_articles_response['articles']
             articles_results=process_articles_results(articles_results_list)
 
     return articles_results
@@ -50,7 +50,7 @@ def get_sources(category):
     '''
     function that gets the json response to our url request
     '''
-    get_sources_url = base_url.format(category,api_key)
+    get_sources_url='https://newsapi.org/v2/everything?language=en&sources=bbc-news&apiKey=e7075240ae9440c18f51074a00244ece'
 
     with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data = url.read()
@@ -58,8 +58,8 @@ def get_sources(category):
 
         sources_results = None
 
-        if get_sources_response['sources']:
-            sources_results_list = get_sources_response['sources']
+        if get_sources_response['articles']:
+            sources_results_list = get_sources_response['articles']
             sources_results=process_sources_results(sources_results_list)
 
     return sources_results
@@ -69,12 +69,14 @@ def process_sources_results(sources_results_list):
     """
     sources_results = []
     for individual_sources in sources_results_list:
-        source_name=individual_sources.get('name')
+        source_title=individual_sources.get('title')
         source_url = individual_sources.get('url')
-        source_id=individual_sources.get('id')
+        urlToImage=individual_sources.get('urlToImage')
         description=individual_sources.get('description')
+        publishedAt=individual_sources.get('publishedAt')
 
-        source_object = Source(source_id,source_name,source_url,description)
+
+        source_object = Source(source_title,source_url,description,urlToImage,publishedAt)
         sources_results.append(source_object)
     return sources_results
 # def search_article():
