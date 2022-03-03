@@ -7,6 +7,8 @@ bootstrap = Bootstrap()
 def create_app(config_name):
     # Initialize the app
     app = Flask(__name__)
+    #Initialize bootstrap
+    bootstrap.init_app(app)
     # Setting up config
     app.config.from_object(config_options[config_name])
     # Registering the blueprint
