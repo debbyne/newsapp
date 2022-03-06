@@ -50,7 +50,7 @@ def get_sources(category):
     '''
     function that gets the json response to our url request
     '''
-    get_sources_url='https://newsapi.org/v2/everything?language=en&sources=bbc-news&apiKey=e7075240ae9440c18f51074a00244ece'
+    get_sources_url=base_url.format(category,api_key)
 
     with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data = url.read()
@@ -58,9 +58,10 @@ def get_sources(category):
 
         sources_results = None
 
-        if get_sources_response['articles']:
-            sources_results_list = get_sources_response['articles']
+        if get_sources_response['sources']:
+            sources_results_list = get_sources_response['sources']
             sources_results=process_sources_results(sources_results_list)
+        # print(sources_results[0])
 
     return sources_results
 def process_sources_results(sources_results_list):
@@ -69,13 +70,11 @@ def process_sources_results(sources_results_list):
     """
     sources_results = []
     for individual_sources in sources_results_list:
-        source_title=individual_sources.get('title')
+        source_name=individual_sources.get('name')
         source_url = individual_sources.get('url')
-        urlToImage=individual_sources.get('urlToImage')
-        description=individual_sources.get('description')
-        publishedAt=individual_sources.get('publishedAt')
-        source_object = Source(source_title,source_url,description,urlToImage,publishedAt)
+        source_id=individual_sources.get('id')
+        source_description=individual_sources.get('description')
+        source_object = Source(source_id,source_name,source_url,source_description)
         sources_results.append(source_object)
+        # print(source_object.source_name)
     return sources_results
-# def search_article():
-#     pass

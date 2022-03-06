@@ -1,19 +1,11 @@
-{% macro display_sources_list(sources_result_list) %}
-<div class="row">
-    {% for source in sources_result_list %}
-    <div class="col-md-4 " style="  height: 400px; ;">
-        <h3 style="color:blue; ">
-            <li style="list-style: none;">{{source.name}}</li>
-        </h3>
-        <li style="font-size:18px; list-style: none;"> <strong>ABOUT SOURCE:</strong> {{source.description}}</li>
-        <li style=" font-size:18px;list-style: none;"><strong>COUNTRY:</strong> {{source.country}}</li>
-        <a href="">
-            <li style="font-size:18px; list-style: none;"><strong>OFFICIAL SITE:</strong> {{source.url}}</li>
-			<img src="{{source.url}}" alt="">
-        </a>
-        <a href="/articles/{{source.id}}" class="btn btn-primary" style="font: size 24px;">See
-            {{source.name}} news articles</a>
-    </div>
-    {% endfor %}
+{% macro displaySourcesList(sources_results_list) %}
+{% for source in source_results_list %}
+<div class="container-fluid">
+ <div class="card">
+    <h4 class="card-title">{{source.source_name}}</h4>
+    <p class="card-text">{{source.source_description}}</p>
+    <a href="/Source/{{source.source_id}}" class="btn btn-primary">View {{source.source_name}}</a>
+ </div>
 </div>
+{% endfor %}
 {% endmacro %}
