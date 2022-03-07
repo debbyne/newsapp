@@ -1,7 +1,7 @@
 {% macro displaySourcesList(sources_results_list) %}
 {% for source in source_results_list %}
-<div class="container-fluid">
- <div class="card">
+<div class="container-fluid row">
+ <div class="card col-md-4">
     <h4 class="card-title">{{source.source_name}}</h4>
     <p class="card-text">{{source.source_description}}</p>
     <a href="/Source/{{source.source_id}}" class="btn btn-primary">View {{source.source_name}}</a>

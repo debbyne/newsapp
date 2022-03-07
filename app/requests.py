@@ -15,7 +15,7 @@ def get_articles():
     '''
     function that gets the json response to our url request
     '''
-    get_articles_url=base_url.format(api_key)
+    get_articles_url=articles_url.format(api_key)
 
     with urllib.request.urlopen(articles_url) as url:
         get_articles_data = url.read()
@@ -34,15 +34,17 @@ def process_articles_results(articles_results_list):
     """
     articles_results = []
     for individual_article in articles_results_list:
-        title = individual_article.get('title')
-        description = individual_article.get('description')
-        url = individual_article.get('url')
+        article_title = individual_article.get('title')
+        article_id = individual_article.get('id')
+        article_description = individual_article.get('description')
+        article_url = individual_article.get('url')
+        article_author=individual_article.get('author')
         urlToImage = individual_article.get('urlToImage')
         publishedAt = individual_article.get('publishedAt')
         # convert date from json to string and backto my specific  format
         publishing_date = datetime.strptime(publishedAt, '%Y-%m-%dT%H:%M:%SZ')
         publishedAt = publishing_date.strftime('%d.%m.%Y')
-        article_object = articles(title, description, url, urlToImage, publishedAt,publishing_date)
+        article_object = articles(article_title , article_id , article_description, article_url, article_author,urlToImage, publishedAt,publishing_date)
         articles_results.append(article_object)
     return articles_results
 

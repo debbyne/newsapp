@@ -17,15 +17,13 @@ def index():
     sports = get_sources('sports')
 
     title = 'NEWSWAVE'
-    print(general_news[0].source_name)
     return render_template('index.html', title = title,general = general_news,business=business,entertainment=Entertainment,health=health,sports=sports )
 
-# @main.route('/Source/<source_id>')
-# def Source(category):
-#     '''
-#     function that returns articles from their sources.
-#     '''
-#     Sources = get_sources(category)
-#     title = 'The hottest news right now'
-
-#     return render_template('index.html', Sources=Sources, title = title)
+@main.route('/source/<source_id>')
+def articles(id):
+    '''
+    function that returns articles from their sources.
+    '''
+    articles = get_articles(id)
+    title = 'The hottest news right now'
+    return render_template('articles.html', articles = articles, title = title)

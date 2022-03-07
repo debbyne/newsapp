@@ -2,7 +2,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-size: 13px;
+    font-size: 14px;
     font-family: Jaldi;
     padding-left: 30px;
     padding-right: 30px;
@@ -13,14 +13,18 @@
   color: white;
   background-color: rgb(8, 133, 236);
 }
-.navb{
+.navbar{
   font-style: italic;
   display: inline-block;
   color: white;
-
+  border: none;
 }
-.navb ul{
-  display: flex;
+.navbar-brand{
+  font-size: larger;
+  color: white;
+}
+.navbar ul{
+ display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   list-style: none;
@@ -28,10 +32,6 @@
 .navbar ul a{
   text-decoration: none;
   color: white;
-
-}
-.navbar li{
-  margin: 4px;
 }
 .card-columns{
   display: inline-block;
@@ -39,4 +39,14 @@
 }
 .card-body{
   border: 0.5px solid rgb(230, 226, 226);
+}
+.container-fluid{
+  padding-top: 35px;
+}
+.footer{
+  background-color: rgb(92, 92, 97);
+  color: white;
+}
+.container-fluid h1{
+  color: red;
 }

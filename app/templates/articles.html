@@ -1,39 +1,18 @@
 {% extends 'base.html'%} {% import 'macros.html' as macro%}
   
     {% block content %}
-    <div class="container" style="background-color: antiquewhite">
-      <div class="row" style="margin-bottom: 10px;" >
-        <div class="">
-          <h1 style="text-align: center; color: rgb(155, 93, 93)">
-            {{id}} News article
-          </h1>
-          <hr />
-          {% for article in articles %}
-          <div
-            class="col-md-4"style="background-color: antiquewhite; height: 500px ;">
-            <h3 style="color: blue">
-              <li style="list-style: none">{{article.title}}</li>
-            </h3>
-            <li style="font-size: 18px; height: 200px; list-style: none">
-              <img
-                style="height: 200px; width: 300px"
-                src="{{article.urlToImage}}"
-                alt="this articles image is unavailabe"/>
-            </li>
-            <li style="font-size: 18px; list-style: none">
-              <strong>ABOUT THIS ARTICLE:</strong> {{article.description}}
-            </li>
-            <li style="font-size: 18px; list-style: none">
-              <strong>PUBLISHED ON:</strong> {{article.publishedAt}}
-            </li>
-            <a href="{{article.url}}"class="btn btn-primary"style="font: size 18px">read more in source</a>
-          </div>
-          {% endfor %}
+          {% for article in Entertainment %}
+          <h3>Entertainment</h3>
+    <div class="card col-md-4">
+        <img class="card-img-top" src="{{article.urlToImage}}" alt="">
+        <div class="card-body">
+          <h5 class="card-title">{{article.article_title}}</h5>
+          <p class="card-text">{{article.article_description}}</p>
+          <a href=" {{article.url}}"  class = "alinks"target="blank"  >More Details</a>
+          <p class="text-muted"> Published at {{publishedAt}} on {{publishingDate}}</p>
         </div>
       </div>
-    </div>  
-      {% block footer %}
-        {% include 'footer.html' %}
-      {% endblock %}
+      {% endfor %}
+      
   {%endblock%}  
     
