@@ -15,7 +15,7 @@ def get_articles():
     '''
     function that gets the json response to our url request
     '''
-    get_articles_url='https://newsapi.org/v2/everything?language=en&sources=bbc-news&apiKey=e7075240ae9440c18f51074a00244ece'
+    get_articles_url=base_url.format(api_key)
 
     with urllib.request.urlopen(articles_url) as url:
         get_articles_data = url.read()
